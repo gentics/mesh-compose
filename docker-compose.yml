@@ -2,7 +2,7 @@ version: "3"
 services:
 
   mesh:
-    image: gentics/mesh:0.17.3
+    image: gentics/mesh:0.21.1
     container_name: mesh-server
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -19,7 +19,7 @@ services:
         hard: 40000
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
     container_name: mesh-elasticsearch
     environment:
       - cluster.name=docker-cluster
