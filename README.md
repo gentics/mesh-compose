@@ -2,16 +2,34 @@
 
 This repository contains an example docker compose stack for the [Headless CMS Gentics Mesh](https://getmesh.io)
 
-The stack contains the following components:
+## Clustering / HA Example
 
-* Gentics Mesh
+The cluster stack contains the following components:
+
+* Gentics Mesh (Three instances)
 * Elasticsearch
+* Nginx (Loadbalancer over three Gentics Mesh instances)
+
+Gentics Mesh forms a cluster using the three instances. Nginx will form a loadbalancer over the three instances.
+
+The first instance will initialize the cluster and the other instances will join the cluster and replicate the database.
+
+Once the setup is up and running you can log in the Admin UI using `admin/admin`
+* http://localhost:8080/mesh-ui
+
+After that you will be able to request on the status endpoints. Note that the node name will alter for each request since Nginx will select a different mesh server to redirect the request to.
+
+* http://localhost:8080/api/v1/
+
+You can also check the overall cluster status using the status endpoint.
+* http://localhost:8080/api/v1/admin/cluster/status
 
 ## Usage
 
 ```bash
 git clone git@github.com:gentics/mesh-compose.git
 cd mesh-compose
+git checkout clustering
 docker-compose up -d
 ```
 
