@@ -55,6 +55,9 @@ Invoking the backup of Gentics Mesh will cause the mesh instance in the cluster 
 
 2. Invoke backup
 
+The [Gentics Mesh CLI](https://getmesh.io/docs/cli/) can be used to invoke the backup on the `backup-node`.
+
+
 ```bash
 $ mesh configure
 ? Endpoint http://localhost:8088
@@ -71,7 +74,7 @@ Invoked server side backup process.
 
 The backup will be stored in the `backup` folder of this repository.
 
-Note that the binary files need to be backuped as well. See https://getmesh.io/docs/administration-guide/#_backup_recovery for more information.
+Note that the binary files need to be backuped as well. Read our [backup documentation](https://getmesh.io/docs/administration-guide/#_backup_recovery) for more information.
 
 ## Suggestions
 
