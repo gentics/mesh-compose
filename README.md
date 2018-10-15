@@ -45,6 +45,34 @@ mesh-elasticsearch | [1]: max virtual memory areas vm.max_map_count [65530] is t
 
 Solution see: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode
 
+## Online Backup
+
+Invoking the backup of Gentics Mesh will cause the mesh instance in the cluster to block any inbound requests. It is thus advised to launch a dedicated instance (`backup-node`) which will join the cluster and replicate the data. Once the instance has joined the backup process can be invoked. After that step the optional `backup-node` can be shut down.
+
+1. Launch backup node
+
+```docker-compose  -f backup-node-compose.yml  up```
+
+2. Invoke backup
+
+```bash
+$ mesh configure
+? Endpoint http://localhost:8088
+? Generate a new API key? Yes
+? Enter username admin
+? Enter password [hidden]
+New key saved
+
+$ mesh admin backup
+Invoked server side backup process.
+```
+
+3. Terminate backup node
+
+The backup will be stored in the `backup` folder of this repository.
+
+Note that the binary files need to be backuped as well. See https://getmesh.io/docs/administration-guide/#_backup_recovery for more information.
+
 ## Suggestions
 
 Placing the Elasticsearch data directory on NFS should be avoided since using NFS with Elasticsearch can lead to an unstable and slow search server.
