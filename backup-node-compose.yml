@@ -2,23 +2,20 @@ version: "3"
 services:
 
   meshBackup:
-    image: gentics/mesh:0.26.0
+    image: gentics/mesh:0.27.0
     container_name: mesh-backup
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
       - MESH_ELASTICSEARCH_START_EMBEDDED=false
-      - MESH_AUTH_KEYSTORE_PATH=/keystore/keystore.jceks
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
       - MESH_NODE_NAME=backup-node
-      - MESH_BINARY_DIR=/uploads
-      - MESH_GRAPH_BACKUP_DIRECTORY=/backup
     ports:
       - '8088:8080'
     volumes:
       - ./backup:/backup
-      - ./mesh-keystore:/keystore
+      - mesh-keystore:/keystore
     ulimits:
       nofile:
         soft: 20000
