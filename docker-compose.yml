@@ -2,18 +2,18 @@ version: "3"
 services:
 
   mesh:
-    image: gentics/mesh:0.21.2
+    image: gentics/mesh:0.27.0
     container_name: mesh-server
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
       - MESH_ELASTICSEARCH_START_EMBEDDED=false
-      - MESH_AUTH_KEYSTORE_PATH=/keystore
       - MESH_AUTH_KEYSTORE_PASS=changeme
     ports:
       - '8081:8080'
     volumes:
-      - meshdata:/data
-      - meshkeystore:/keystore
+      - mesh-data:/graphdb
+      - mesh-uploads:/uploads
+      - mesh-keystore:/keystore
     ulimits:
       nofile:
         soft: 20000
@@ -41,7 +41,9 @@ services:
 volumes:
   esdata:
     driver: local
-  meshkeystore:
+  mesh-keystore:
     driver: local
-  meshdata:
+  mesh-data:
+    driver: local
+  mesh-uploads:
     driver: local
