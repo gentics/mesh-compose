@@ -2,7 +2,7 @@ version: "3"
 services:
 
   meshBackup:
-    image: gentics/mesh:0.25.0
+    image: gentics/mesh:0.26.0
     container_name: mesh-backup
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
