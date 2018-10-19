@@ -10,6 +10,7 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
+      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_NODE_NAME=backup-node
     ports:
       - '8088:8080'

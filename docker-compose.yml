@@ -11,6 +11,7 @@ services:
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
       - MESH_NODE_NAME=nodeA
+      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_CLUSTER_INIT=true
     ports:
       - '8081:8080'
@@ -32,6 +33,7 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
+      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_NODE_NAME=nodeB
     ports:
       - '8082:8080'
@@ -53,6 +55,7 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
+      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_NODE_NAME=nodeC
     ports:
       - '8083:8080'
