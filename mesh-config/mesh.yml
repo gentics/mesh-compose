@@ -1,0 +1,18 @@
+---
+updateCheck: true
+httpServer:
+  host: "0.0.0.0"
+security:
+  enableAnonymousAccess: true
+  oauth2:
+    enabled: true
+    config:
+      realm: "master-test"
+      authServerUrl: "http://keycloak:8080/auth"
+      sslRequired: "external"
+      resource: "mesh"
+      credentials:
+        secret: "9b65c378-5b4c-4e25-b5a1-a53a381b5fb4"
+      confidentialPort: 0
+    mapperScriptPath: "/config/mapperscript.js"
+    mapperScriptDevMode: true
