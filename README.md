@@ -45,6 +45,8 @@ mesh-elasticsearch | [1]: max virtual memory areas vm.max_map_count [65530] is t
 
 Solution see: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode
 
+TLDR: Run `sysctl -w vm.max_map_count=262144` on your docker Host system.
+
 ## Online Backup
 
 Invoking the backup of Gentics Mesh will cause the mesh instance in the cluster to block any inbound requests. It is thus advised to launch a dedicated instance (`backup-node`) which will join the cluster and replicate the data. Once the instance has joined the backup process can be invoked. After that step the optional `backup-node` can be shut down.
