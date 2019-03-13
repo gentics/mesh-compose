@@ -2,7 +2,7 @@ version: "3"
 services:
 
   meshA:
-    image: gentics/mesh:0.30.2
+    image: gentics/mesh:0.31.0
     container_name: mesh-server-a
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -25,7 +25,7 @@ services:
         hard: 40000
 
   meshB:
-    image: gentics/mesh:0.30.2
+    image: gentics/mesh:0.31.0
     container_name: mesh-server-b
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -47,7 +47,7 @@ services:
         hard: 40000
 
   meshC:
-    image: gentics/mesh:0.30.2
+    image: gentics/mesh:0.31.0
     container_name: mesh-server-c
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -70,7 +70,7 @@ services:
 
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.0
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.6.2
     container_name: mesh-elasticsearch
     environment:
       - cluster.name=docker-cluster
