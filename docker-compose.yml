@@ -2,7 +2,7 @@ version: "3"
 services:
 
   meshA:
-    image: &mesh-image-name gentics/mesh:0.34.0
+    image: &mesh-image-name gentics/mesh:0.35.0
     container_name: mesh-server-a
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
