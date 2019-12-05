@@ -2,11 +2,10 @@ version: "3"
 services:
 
   meshBackup:
-    image: gentics/mesh:1.0.0
+    image: gentics/mesh:1.3.0
     container_name: mesh-backup
     environment:
-      - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
-      - MESH_ELASTICSEARCH_START_EMBEDDED=false
+      - MESH_ELASTICSEARCH_URL=null
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster

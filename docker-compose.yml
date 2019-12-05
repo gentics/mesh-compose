@@ -6,7 +6,6 @@ services:
     container_name: mesh-server-a
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
-      - MESH_ELASTICSEARCH_START_EMBEDDED=false
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
@@ -32,7 +31,6 @@ services:
     container_name: mesh-server-b
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
-      - MESH_ELASTICSEARCH_START_EMBEDDED=false
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
@@ -54,7 +52,6 @@ services:
     container_name: mesh-server-c
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
-      - MESH_ELASTICSEARCH_START_EMBEDDED=false
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
