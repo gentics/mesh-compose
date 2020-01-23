@@ -5,7 +5,6 @@ This repository contains an example docker compose stack for the [Headless CMS G
 The stack contains the following components:
 
 * Gentics Mesh
-* Elasticsearch
 
 ## Usage
 
@@ -13,22 +12,20 @@ The stack contains the following components:
 git clone git@github.com:gentics/mesh-compose.git
 cd mesh-compose
 docker-compose up -d
-```
 
-## Problems / Solutions
-
-### Elasticsearch does not start.
-
-On some system the Elasticsearch server does not start due to the `vm.max_map_count` kernel limit.
+# http://localhost:8080
+# Login: admin/admin
 
 ```
-mesh-elasticsearch | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
-```
 
-Solution see: https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html#docker-cli-run-prod-mode
+## Language Handling
 
-## Suggestions
+This example shows how an additional language (Klingon [**tlh**]) can be added to Gentics Mesh.
 
-Placing the Elasticsearch data directory on NFS should be avoided since using NFS with Elasticsearch can lead to an unstable and slow search server.
+The language first needs to be added to the `lang.json` file. This file will be read by Mesh to create the extra language/s.
 
+Please note that Mesh already contains all the default ISO 639-1 languages. (Two letter codes only).
 
+https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+The `mesh-ui2-config.js` file additionally lists the `contentLanguages` that are available in the UI. The added language codes have to be added here as well.
