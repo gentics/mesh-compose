@@ -18,14 +18,3 @@ docker-compose up -d
 
 ```
 
-## Language Handling
-
-This example shows how an additional language (Klingon [**tlh**]) can be added to Gentics Mesh.
-
-The language first needs to be added to the `lang.json` file. This file will be read by Mesh to create the extra language/s.
-
-Please note that Mesh already contains all the default ISO 639-1 languages. (Two letter codes only).
-
-https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-
-The `mesh-ui2-config.js` file additionally lists the `contentLanguages` that are available in the UI. The added language codes have to be added here as well.

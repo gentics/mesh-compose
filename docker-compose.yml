@@ -2,13 +2,12 @@ version: "3"
 services:
 
   mesh:
-    image: gentics/mesh:1.3.3
+    image: gentics/mesh:1.4.3
     container_name: mesh-server
     environment:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_INITIAL_ADMIN_PASSWORD=admin
       - MESH_INITIAL_ADMIN_PASSWORD_FORCE_RESET=false
-      - MESH_LANGUAGES_FILE_PATH=/config/lang.json
     stop_grace_period: 5m
     ports:
       - '8080:8080'
@@ -16,8 +15,8 @@ services:
       - mesh-data:/graphdb
       - mesh-uploads:/uploads
       - mesh-keystore:/keystore
-      - ./lang.json:/config/lang.json
-      - ./mesh-ui2-config.js:/config/mesh-ui2-config.js
+      - ./logback.xml:/config/logback.xml
+      - ./log:/mesh/log
     ulimits:
       nofile:
         soft: 20000
