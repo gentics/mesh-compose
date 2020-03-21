@@ -8,6 +8,8 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_INITIAL_ADMIN_PASSWORD=admin
       - MESH_INITIAL_ADMIN_PASSWORD_FORCE_RESET=false
+      # OrientDB server is needed to run the automatic backup (it is automatically enabled in clustered mode)
+      - MESH_GRAPH_STARTSERVER=true
     stop_grace_period: 5m
     ports:
       - '8080:8080'
@@ -15,8 +17,9 @@ services:
       - mesh-data:/graphdb
       - mesh-uploads:/uploads
       - mesh-keystore:/keystore
-      - ./logback.xml:/config/logback.xml
-      - ./log:/mesh/log
+      - ./backups:/backups
+      - ./config/automatic-backup.json:/config/automatic-backup.json
+      - ./config/orientdb-server-config.xml:/config/orientdb-server-config.xml
     ulimits:
       nofile:
         soft: 20000

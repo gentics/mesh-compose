@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "mode": "FULL_BACKUP",
+  "exportOptions": "",
+  "delay": "1min",
+  "firstTime": "08:12:00",
+  "targetDirectory": "/backups",
+  "targetFileName": "${DBNAME}-${DATE:yyyyMMddHHmmss}.zip",
+  "compressionLevel": 9,
+  "bufferSize": 1048576
+}
