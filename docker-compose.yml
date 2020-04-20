@@ -2,7 +2,7 @@ version: "3"
 services:
 
   meshA:
-    image: &mesh-image-name gentics/mesh:1.3.0
+    image: &mesh-image-name gentics/mesh:1.4.6
     container_name: mesh-server-a
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -10,11 +10,11 @@ services:
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
       - MESH_NODE_NAME=nodeA
-      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_INITIAL_ADMIN_PASSWORD=admin
       - MESH_INITIAL_ADMIN_PASSWORD_FORCE_RESET=false
       - MESH_ELASTICSEARCH_COMPLIANCE_MODE=ES_7
       - MESH_CLUSTER_INIT=true
+      - MESH_GRAPH_SYNC_WRITES=true
     ports:
       - '8081:8080'
     volumes:
@@ -34,8 +34,8 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
-      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_NODE_NAME=nodeB
+      - MESH_GRAPH_SYNC_WRITES=true
     ports:
       - '8082:8080'
     volumes:
@@ -55,8 +55,8 @@ services:
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
-      - MESH_CLUSTER_VERTX_PORT=4848
       - MESH_NODE_NAME=nodeC
+      - MESH_GRAPH_SYNC_WRITES=true
     ports:
       - '8083:8080'
     volumes:
