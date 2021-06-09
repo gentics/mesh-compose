@@ -2,7 +2,7 @@ version: "3"
 services:
 
   meshA:
-    image: &mesh-image-name gentics/mesh:1.4.6
+    image: &mesh-image-name docker.apa-it.at/gentics/mesh:1.6.13
     container_name: mesh-server-a
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
@@ -15,10 +15,17 @@ services:
       - MESH_ELASTICSEARCH_COMPLIANCE_MODE=ES_7
       - MESH_CLUSTER_INIT=true
       - MESH_GRAPH_SYNC_WRITES=true
+      - MESH_CLUSTER_COORDINATOR_MODE=CUD
+      - MESH_CLUSTER_COORDINATOR_REGEX="node+."
+      - MESH_UPDATECHECK=false
+      - MESH_ELASTICSEARCH_WAIT_FOR_IDLE=false
+      - MESH_CLUSTER_TOPOLOGY_CHANGE_READONLY=true
+      - MESH_CLUSTER_TOPOLOGY_LOCK_TIMEOUT=0
+      - JAVA_TOOL_OPTIONS=
     ports:
       - '8081:8080'
     volumes:
-      - meshdata-a:/graphdb
+      - graphdbA:/graphdb
       - mesh-uploads:/uploads
       - mesh-keystore:/keystore
     ulimits:
@@ -36,10 +43,17 @@ services:
       - MESH_CLUSTER_NAME=mesh-docker-cluster
       - MESH_NODE_NAME=nodeB
       - MESH_GRAPH_SYNC_WRITES=true
+      - MESH_ELASTICSEARCH_COMPLIANCE_MODE=ES_7
+      - MESH_CLUSTER_COORDINATOR_MODE=CUD
+      - MESH_CLUSTER_COORDINATOR_REGEX="node+."
+      - MESH_UPDATECHECK=false
+      - MESH_ELASTICSEARCH_WAIT_FOR_IDLE=false
+      - MESH_CLUSTER_TOPOLOGY_CHANGE_READONLY=true
+      - MESH_CLUSTER_TOPOLOGY_LOCK_TIMEOUT=0
     ports:
       - '8082:8080'
     volumes:
-      - meshdata-b:/graphdb
+      - graphdbB:/graphdb
       - mesh-uploads:/uploads
       - mesh-keystore:/keystore
     ulimits:
@@ -52,15 +66,23 @@ services:
     container_name: mesh-server-c
     environment:
       - MESH_ELASTICSEARCH_URL=http://elasticsearch:9200
+      - MESH_UPDATECHECK="false"
       - MESH_AUTH_KEYSTORE_PASS=changeme
       - MESH_CLUSTER_ENABLED=true
       - MESH_CLUSTER_NAME=mesh-docker-cluster
       - MESH_NODE_NAME=nodeC
       - MESH_GRAPH_SYNC_WRITES=true
+      - MESH_ELASTICSEARCH_COMPLIANCE_MODE=ES_7
+      - MESH_CLUSTER_COORDINATOR_MODE=CUD
+      - MESH_CLUSTER_COORDINATOR_REGEX="node+."
+      - MESH_UPDATECHECK=false
+      - MESH_ELASTICSEARCH_WAIT_FOR_IDLE=false
+      - MESH_CLUSTER_TOPOLOGY_CHANGE_READONLY=true
+      - MESH_CLUSTER_TOPOLOGY_LOCK_TIMEOUT=0
     ports:
       - '8083:8080'
     volumes:
-      - meshdata-c:/graphdb
+      - graphdbC:/graphdb
       - mesh-uploads:/uploads
       - mesh-keystore:/keystore
     ulimits:
@@ -107,9 +129,9 @@ volumes:
     driver: local
   mesh-uploads:
     driver: local
-  meshdata-a:
+  graphdbA:
     driver: local
-  meshdata-b:
-    driver: local 
-  meshdata-c:
+  graphdbB:
+    driver: local
+  graphdbC:
     driver: local
